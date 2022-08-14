@@ -1,7 +1,38 @@
 @import-normalize; /* bring in normalize.css styles */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap');
+
+html[data-topics='pink'] {
+  --background-section: #ffb8d0;
+  --background-card-box: #cc3a6d;
+  --contact-list: #d46086;
+}
+
+html[data-topics='dark'] {
+  --background-section: #243a4d;
+  --background-card-box: #334351;
+  --contact-list: #465c70;
+}
+
+html[data-topics='grin'] {
+  --background-section: #6cc17e;
+  --background-card-box: #3d9751;
+  --contact-list: #69b279;
+}
+
+html[data-topics='violet'] {
+  --background-section: #c498cc;
+  --background-card-box: #b54ec8;
+  --contact-list: #c38ecc;
+}
 
 * {
   box-sizing: border-box;
+}
+
+body {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 400;
+  color: #fff;
 }
 
 a {
