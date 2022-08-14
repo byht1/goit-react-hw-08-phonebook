@@ -7,7 +7,7 @@ export const Contact = ({ data: { name, number } }) => {
 
   useEffect(() => {
     setIcon(name[0].toUpperCase());
-  }, []);
+  }, [name]);
 
   return (
     <Elements>
