@@ -21,6 +21,7 @@ export const App = () => {
           <Route path="/sing-in" element={<SingIn />} />
           <Route path="/sing-up" element={<SingUp />} />
         </Route>
+        <Route path="*" element={<AppBar />} />
       </Routes>
 
       <Topics />

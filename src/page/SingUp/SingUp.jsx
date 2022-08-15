@@ -3,10 +3,21 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { WrapperSingUp, Text, Label, FormText } from './SingUp.styled';
 import { InputForm } from '../../components/FormNewContacts/FormNewContacts.styled';
+import { AuthOperations } from 'redux/user';
+import { useDispatch } from 'react-redux';
 
 export default function SingIn() {
-  const { register, handleSubmit } = useForm();
-  const onSubmit = data => console.log(data);
+  const { register, handleSubmit, reset } = useForm();
+  const dispatch = useDispatch();
+  const onSubmit = async data => {
+    try {
+      const a = await dispatch(AuthOperations.register(data));
+      console.log('🚀 ~ a', a);
+      reset();
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <WrapperSingUp>
