@@ -1,49 +1,25 @@
 import styled from 'styled-components';
-import { Input } from './../SearchContacts/SearchContacts.styled';
 
-export const FormWrapper = styled.div`
-  width: 500px;
-  padding: 20px 30px;
-  border-radius: 5px;
-  background-color: var(--background-card-box);
-`;
-
-export const Form = styled.form`
-  width: 100%;
+export const BoxMenu = styled.div`
   display: flex;
-  gap: 10px;
-  flex-direction: column;
-`;
-
-export const Label = styled.label`
-  display: flex;
-  justify-content: space-between;
   align-items: center;
+  gap: 50px;
 `;
 
-export const SpanText = styled.span`
-  display: inline-block;
-  width: 100px;
-  text-align: right;
-  margin-right: 10px;
-  line-height: 30px;
-  font-weight: 500;
-  color: #fff;
+export const Img = styled.img`
+  width: 43px;
 `;
 
-export const InputForm = styled(Input)`
-  display: inline-block;
-  padding: 10px 10px 10px 20px;
-  margin: 0;
-  margin-left: auto;
-  width: 300px;
+export const UserName = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 20px;
 `;
 
-export const ButtonSubmit = styled.input`
+export const Button = styled.button`
   display: block;
   /* max-width: 150px; */
   margin: 0 auto;
-  margin-top: 40px;
   padding: 5px 20px;
 
   font-family: 'Orbitron', sans-serif;
