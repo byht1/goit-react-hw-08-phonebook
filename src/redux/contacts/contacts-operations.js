@@ -3,6 +3,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
+// Отримати всі контакти користувача
 export const contactsListServer = createAsyncThunk(
   'contacts/contacts',
   async () => {
@@ -15,6 +16,7 @@ export const contactsListServer = createAsyncThunk(
   }
 );
 
+// Створити новий контакт
 export const newContact = createAsyncThunk(
   'contacts/new',
   async credentials => {
@@ -26,6 +28,7 @@ export const newContact = createAsyncThunk(
   }
 );
 
+// Видалити контакт
 export const deleteContact = createAsyncThunk('contacts/delete', async id => {
   try {
     await axios.delete(`/contacts/${id}`);
@@ -34,6 +37,7 @@ export const deleteContact = createAsyncThunk('contacts/delete', async id => {
   }
 });
 
+// Редагувати контакт
 export const updateContact = createAsyncThunk(
   'contacts/new',
   async (id, credentials) => {

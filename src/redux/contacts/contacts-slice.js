@@ -16,7 +16,8 @@ const contactsSlice = createSlice({
   initialState,
   extraReducers: {
     [contactsListServer.fulfilled](state, action) {
-      state.contacts = [...action.payload];
+      // state.contacts = [...action.payload];
+      state.contacts.push(action.payload);
     },
     [newContact.fulfilled](state, action) {
       state.contacts.push(action.payload);
