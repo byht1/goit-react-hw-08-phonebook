@@ -5,7 +5,7 @@ axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
 // Отримати всі контакти користувача
 export const contactsListServer = createAsyncThunk(
-  'contacts/contacts',
+  'contacts/contactsListServer',
   async () => {
     try {
       const { data } = await axios.get('/contacts');
@@ -21,7 +21,8 @@ export const newContact = createAsyncThunk(
   'contacts/new',
   async credentials => {
     try {
-      await axios.post('/contacts', credentials);
+      const { data } = await axios.post('/contacts', credentials);
+      return data;
     } catch (error) {
       // Error
     }
@@ -32,6 +33,7 @@ export const newContact = createAsyncThunk(
 export const deleteContact = createAsyncThunk('contacts/delete', async id => {
   try {
     await axios.delete(`/contacts/${id}`);
+    return id;
   } catch (error) {
     // Erroe
   }
@@ -39,7 +41,7 @@ export const deleteContact = createAsyncThunk('contacts/delete', async id => {
 
 // Редагувати контакт
 export const updateContact = createAsyncThunk(
-  'contacts/new',
+  'contacts/updateContact',
   async (id, credentials) => {
     try {
       const data = await axios.patch(`/contacts/${id}`, credentials);

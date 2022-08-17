@@ -1,6 +1,6 @@
+import React from 'react';
 import { FormNewContacts } from 'components/FormNewContacts/FormNewContacts';
 import { SearchContacts } from 'components/SearchContacts/SearchContacts';
-import React from 'react';
 import { ContactsWrapper, Title, CartWrapper } from './Contacts.styled';
 import { ContactList } from 'components/ContactList/ContactList';
 

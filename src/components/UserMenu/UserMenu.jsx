@@ -23,7 +23,7 @@ export const UserMenu = () => {
       <UserName>
         <Img src={userIcon} alt="user icon" />
         <p>
-          Welcome <b>{user}</b>
+          Welcome <b>{user ? user : 'XXX'}</b>
         </p>
       </UserName>
 

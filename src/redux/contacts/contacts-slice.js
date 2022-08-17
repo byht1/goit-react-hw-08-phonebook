@@ -17,12 +17,13 @@ const contactsSlice = createSlice({
   extraReducers: {
     [contactsListServer.fulfilled](state, action) {
       // state.contacts = [...action.payload];
-      state.contacts.push(action.payload);
+      state.contacts = action.payload;
     },
     [newContact.fulfilled](state, action) {
       state.contacts.push(action.payload);
     },
     [deleteContact.fulfilled](state, action) {
+      console.log('🚀 ~ action', action);
       state.contacts = state.contacts.filter(({ id }) => id !== action.payload);
     },
     [updateContact.fulfilled](state, { payload }) {

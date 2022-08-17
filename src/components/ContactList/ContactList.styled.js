@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const ContactListWrapper = styled.div`
   padding: 20px 30px;
-  width: 500px;
+  width: 600px;
   border-radius: 5px;
   background-color: var(--background-card-box);
 `;
@@ -19,6 +19,7 @@ export const Elements = styled.li`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 10px;
 
   &:not(:first-child) {
     margin-top: 20px;
@@ -31,6 +32,11 @@ export const NameContacts = styled.p`
   align-items: center;
   gap: 20px;
   font-size: 1.2em;
+`;
+
+export const ButtonBox = styled.div`
+  display: flex;
+  gap: 10px;
 `;
 
 export const Button = styled.button`
