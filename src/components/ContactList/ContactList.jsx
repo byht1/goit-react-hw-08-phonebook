@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Contact } from './Contact';
 import { ContactListWrapper, Title, List } from './ContactList.styled';
 import { useSelector, useDispatch } from 'react-redux';
@@ -15,7 +15,7 @@ import { useSearchParams } from 'react-router-dom';
 // ];
 
 export const ContactList = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const filter = searchParams.get('search') ?? '';
   const contacts = useSelector(getContacts);
   const dispatch = useDispatch();

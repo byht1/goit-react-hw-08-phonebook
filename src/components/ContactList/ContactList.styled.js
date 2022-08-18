@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 
 export const ContactListWrapper = styled.div`
+  overflow: auto;
   padding: 20px 30px;
   width: 600px;
+  max-height: 320px;
   border-radius: 5px;
   background-color: var(--background-card-box);
 `;

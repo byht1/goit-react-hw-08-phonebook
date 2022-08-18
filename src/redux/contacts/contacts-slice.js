@@ -20,6 +20,7 @@ const contactsSlice = createSlice({
       state.contacts = action.payload;
     },
     [newContact.fulfilled](state, action) {
+      console.log('🚀 ~ action.payload', action.payload);
       state.contacts.push(action.payload);
     },
     [deleteContact.fulfilled](state, action) {

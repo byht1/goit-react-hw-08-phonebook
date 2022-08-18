@@ -41,10 +41,10 @@ export const deleteContact = createAsyncThunk('contacts/delete', async id => {
 
 // Редагувати контакт
 export const updateContact = createAsyncThunk(
-  'contacts/updateContact',
-  async (id, credentials) => {
+  'contacts/update',
+  async ({ id, ...credentials }) => {
     try {
-      const data = await axios.patch(`/contacts/${id}`, credentials);
+      const { data } = await axios.patch(`/contacts/${id}`, credentials);
       return data;
     } catch (error) {
       // Error

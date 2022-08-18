@@ -43,7 +43,11 @@ export const Contact = ({ data: { id, name, number } }) => {
           onClick={() => onDeleteContact(id)}
           dispatch={loading}
         >
-          {loading ? <TailSpin size={20} /> : <MdDelete size={20} />}
+          {loading ? (
+            <TailSpin width={20} height={20} />
+          ) : (
+            <MdDelete size={20} />
+          )}
         </Button>
         <Button type="button" onClick={() => setIsModal(true)}>
           <BsPencilFill size={20} />

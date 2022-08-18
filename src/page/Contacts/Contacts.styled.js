@@ -10,9 +10,10 @@ export const Title = styled.h1`
 
 export const CartWrapper = styled.div`
   margin-top: 50px;
+  padding-right: 50px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   justify-items: center;
-  align-items: center;
+  align-items: flex-start;
   gap: 50px;
 `;
