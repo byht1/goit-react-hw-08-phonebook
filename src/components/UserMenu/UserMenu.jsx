@@ -13,9 +13,12 @@ export const UserMenu = () => {
   const navigate = useNavigate();
 
   const spreadOut = async () => {
-    await dispatch(AuthOperations.logOut());
-    navigate('/sing-in', { replace: true });
-    console.log('Успішний виход з системи');
+    try {
+      await dispatch(AuthOperations.logOut());
+      navigate('/sing-in', { replace: true });
+      window.localStorage.removeItem('persist:auth');
+      console.log('Успішний виход з системи');
+    } catch (error) {}
   };
 
   return (
