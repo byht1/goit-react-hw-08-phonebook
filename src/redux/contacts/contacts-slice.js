@@ -9,25 +9,40 @@ import {
 const initialState = {
   contacts: [],
   isLoadingContacts: false,
+  error: false,
+  errorMessage: '',
 };
 
 const contactsSlice = createSlice({
   name: 'contacts',
   initialState,
   extraReducers: {
-    [contactsListServer.fulfilled](state, action) {
-      // state.contacts = [...action.payload];
-      state.contacts = action.payload;
+    [contactsListServer.fulfilled](state, { payload }) {
+      if (payload.response?.status === 404) {
+        state.error = true;
+        state.errorMessage = payload.message;
+        return;
+      }
+      state.contacts = payload;
+      state.error = false;
+      state.errorMessage = '';
     },
-    [newContact.fulfilled](state, action) {
-      console.log('🚀 ~ action.payload', action.payload);
-      state.contacts.push(action.payload);
+    [newContact.fulfilled](state, { payload }) {
+      if (payload === 404) {
+        return;
+      }
+      state.contacts.push(payload);
     },
-    [deleteContact.fulfilled](state, action) {
-      console.log('🚀 ~ action', action);
-      state.contacts = state.contacts.filter(({ id }) => id !== action.payload);
+    [deleteContact.fulfilled](state, { payload }) {
+      if (payload === 404) {
+        return;
+      }
+      state.contacts = state.contacts.filter(({ id }) => id !== payload);
     },
     [updateContact.fulfilled](state, { payload }) {
+      if (payload === 404) {
+        return;
+      }
       state.contacts = state.contacts.map(contact =>
         contact.id === payload.id ? payload : contact
       );

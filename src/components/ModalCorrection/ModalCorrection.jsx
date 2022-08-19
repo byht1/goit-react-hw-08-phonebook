@@ -28,6 +28,7 @@ export const ModalCorrection = ({ close, name, number, id }) => {
     return () => {
       window.removeEventListener('keydown', clickEscate);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function clickEscate(e) {
@@ -43,11 +44,9 @@ export const ModalCorrection = ({ close, name, number, id }) => {
     close(false);
   }
 
-  const onSubmit = async data => {
-    try {
-      await dispatch(contactsOperations.updateContact({ id, ...data }));
-      close(false);
-    } catch (error) {}
+  const onSubmit = data => {
+    dispatch(contactsOperations.updateContact({ id, ...data }));
+    close(false);
   };
 
   return createPortal(

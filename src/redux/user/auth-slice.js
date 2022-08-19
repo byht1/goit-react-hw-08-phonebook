@@ -12,27 +12,43 @@ export const authSlice = createSlice({
   name: 'auth',
   initialState,
   extraReducers: {
-    [register.fulfilled](state, action) {
+    [register.fulfilled](state, { payload }) {
+      if (payload === 400) {
+        return;
+      }
       state.user = {
-        name: action.payload.user.name,
-        email: action.payload.user.email,
+        name: payload.user.name,
+        email: payload.user.email,
       };
-      state.token = action.payload.token;
+      state.token = payload.token;
       state.isLoggedIn = true;
+      state.error = false;
     },
-    [logIn.fulfilled](state, action) {
-      state.user = action.payload.user;
-      state.token = action.payload.token;
+    [logIn.fulfilled](state, { payload }) {
+      if (payload === 400) {
+        return;
+      }
+      state.user = payload.user;
+      state.token = payload.token;
       state.isLoggedIn = true;
+      state.error = false;
     },
-    [logOut.fulfilled](state, action) {
+    [logOut.fulfilled](state, { payload }) {
+      if (payload === 400) {
+        return;
+      }
       state.user = { name: null, email: null };
       state.token = null;
       state.isLoggedIn = false;
+      state.error = false;
     },
-    [fetchCurrentUser.fulfilled](state, action) {
-      state.user = action.payload;
+    [fetchCurrentUser.fulfilled](state, { payload }) {
+      if (payload === 400) {
+        return;
+      }
+      state.user = payload;
       state.isLoggedIn = true;
+      state.error = false;
     },
   },
 });

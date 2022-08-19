@@ -2,10 +2,13 @@ import React, { useEffect } from 'react';
 import { Contact } from './Contact';
 import { ContactListWrapper, Title, List } from './ContactList.styled';
 import { useSelector, useDispatch } from 'react-redux';
-import { getContacts } from './../../redux/contacts/contacts-selector';
+import {
+  getContacts,
+  getError,
+} from './../../redux/contacts/contacts-selector';
 import { ErrorContactList } from 'components/ErrorContactList/ErrorContactList';
 import { contactsOperations } from 'redux/contacts';
-import { useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 // const contactsList = [
 //   { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
@@ -18,11 +21,16 @@ export const ContactList = () => {
   const [searchParams] = useSearchParams();
   const filter = searchParams.get('search') ?? '';
   const contacts = useSelector(getContacts);
+  const error = useSelector(getError);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(contactsOperations.contactsListServer());
-  }, [dispatch]);
+    if (error) {
+      navigate('/error', { replace: true });
+    }
+  }, [dispatch, error, navigate]);
 
   const renderContacts = filter
     ? contacts.filter(x => x.name.toLowerCase().includes(filter.toLowerCase()))

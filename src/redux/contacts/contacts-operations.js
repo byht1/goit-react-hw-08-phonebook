@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
@@ -11,7 +12,7 @@ export const contactsListServer = createAsyncThunk(
       const { data } = await axios.get('/contacts');
       return data;
     } catch (error) {
-      // Erroe
+      return error;
     }
   }
 );
@@ -22,8 +23,11 @@ export const newContact = createAsyncThunk(
   async credentials => {
     try {
       const { data } = await axios.post('/contacts', credentials);
+      toast.success(`Contact successfully added`);
       return data;
     } catch (error) {
+      toast.error("Sorry, we couldn't add a new contact");
+      return error.response.status;
       // Error
     }
   }
@@ -35,7 +39,8 @@ export const deleteContact = createAsyncThunk('contacts/delete', async id => {
     await axios.delete(`/contacts/${id}`);
     return id;
   } catch (error) {
-    // Erroe
+    toast.error('Sorry, we could not delete the contact');
+    return error.response.status;
   }
 });
 
@@ -45,8 +50,11 @@ export const updateContact = createAsyncThunk(
   async ({ id, ...credentials }) => {
     try {
       const { data } = await axios.patch(`/contacts/${id}`, credentials);
+      toast.success(`The contact has been successfully repaired`);
       return data;
     } catch (error) {
+      toast.error(`${error.massage}`);
+      return error.response.status;
       // Error
     }
   }

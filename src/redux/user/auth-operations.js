@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
@@ -19,12 +20,13 @@ export const register = createAsyncThunk(
   async credentials => {
     try {
       const { data } = await axios.post('/users/signup', credentials);
-
+      toast.success(`Registration is successful`);
       token.set(data.token);
+
       return data;
     } catch (error) {
-      console.error(error);
-      // Добавить обработку ошибки error.message
+      toast.error(`${error.message}`);
+      return error.response.status;
     }
   }
 );
@@ -36,7 +38,8 @@ export const logIn = createAsyncThunk('auth/login', async credentials => {
     token.set(data.token);
     return data;
   } catch (error) {
-    // Добавить обработку ошибки error.message
+    toast.error('The password or username is incorrect');
+    return error.response.status;
   }
 });
 
@@ -45,7 +48,8 @@ export const logOut = createAsyncThunk('auth/logout', async () => {
     await axios.post('/users/logout');
     token.unset();
   } catch (error) {
-    // Добавить обработку ошибки error.message
+    toast.error(`${error.message}`);
+    return error.response.status;
   }
 });
 
@@ -65,7 +69,8 @@ export const fetchCurrentUser = createAsyncThunk(
       const { data } = await axios.get('/users/current');
       return data;
     } catch (error) {
-      // Добавить обработку ошибки error.message
+      toast.error(`${error.message}`);
+      return error.response.status;
     }
   }
 );

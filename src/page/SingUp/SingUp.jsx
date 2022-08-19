@@ -5,23 +5,11 @@ import { WrapperSingUp, Text, Label, FormText } from './SingUp.styled';
 import { InputForm } from '../../components/FormNewContacts/FormNewContacts.styled';
 import { AuthOperations } from 'redux/user';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 
 export default function SingIn() {
-  const { register, handleSubmit, reset } = useForm();
+  const { register, handleSubmit } = useForm();
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-
-  const onSubmit = async data => {
-    try {
-      await dispatch(AuthOperations.register(data));
-      reset();
-      navigate('/contacts', { replace: true });
-    } catch (error) {
-      console.error(error);
-      // Нада доробить
-    }
-  };
+  const onSubmit = async data => dispatch(AuthOperations.register(data));
 
   return (
     <WrapperSingUp>

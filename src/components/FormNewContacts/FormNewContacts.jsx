@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { contactsOperations } from 'redux/contacts';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { getContacts } from './../../redux/contacts/contacts-selector';
 import {
   Form,
   FormWrapper,
@@ -13,15 +14,17 @@ import {
 export const FormNewContacts = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+  const contacts = useSelector(getContacts);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    setName('');
+    setNumber('');
+  }, [contacts]);
 
   const onSubmit = async event => {
     event.preventDefault();
-    try {
-      dispatch(contactsOperations.newContact({ name, number }));
-      setName('');
-      setNumber('');
-    } catch (error) {}
+    dispatch(contactsOperations.newContact({ name, number }));
   };
 
   return (

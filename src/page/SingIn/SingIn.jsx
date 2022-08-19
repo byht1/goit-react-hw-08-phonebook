@@ -34,7 +34,7 @@ export default function SingIn() {
           <InputForm type="password" {...register('password')} required />
         </Label>
 
-        <ButtonSubmit type="submit" value={'register'} />
+        <ButtonSubmit type="submit" value={'Sing In'} />
       </form>
     </WrapperSingIn>
   );

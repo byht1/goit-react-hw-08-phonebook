@@ -6,5 +6,5 @@ import { Navigate } from 'react-router-dom';
 export const PublicRouter = ({ children, restricted = false }) => {
   const isLoggedIn = useSelector(getIsLoggedIn);
   const redirect = isLoggedIn && restricted;
-  return <>{redirect ? <Navigate to="/" replace /> : children}</>;
+  return <>{redirect ? <Navigate to="/contacts" replace /> : children}</>;
 };
