@@ -1,9 +1,7 @@
 import React from 'react';
 import { NavBox, NavList, NLink } from './Nav.styled';
 import { getIsLoggedIn } from './../../redux/user/auth-selector';
-import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { AuthOperations } from 'redux/user';
+import { useSelector } from 'react-redux';
 import { UserMenu } from 'components/UserMenu/UserMenu';
 
 // NLink === NavLink

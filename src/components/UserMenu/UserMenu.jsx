@@ -1,6 +1,5 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import { AuthOperations } from 'redux/user';
 import { getUsername } from 'redux/user/auth-selector';
 import { BoxMenu, Button, Img, UserName } from './UserMenu.styled';
@@ -10,15 +9,10 @@ export const UserMenu = () => {
   const user = useSelector(getUsername);
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const spreadOut = async () => {
-    try {
-      await dispatch(AuthOperations.logOut());
-      navigate('/sing-in', { replace: true });
-      window.localStorage.removeItem('persist:auth');
-      console.log('Успішний виход з системи');
-    } catch (error) {}
+    await dispatch(AuthOperations.logOut());
+    window.localStorage.removeItem('persist:auth');
   };
 
   return (

@@ -11,7 +11,7 @@ import {
 
 export default function ErrorMessage() {
   const massege = useSelector(getErrorMessage);
-  console.log('🚀 ~ massege', massege);
+
   return (
     <ErrorMessageBox>
       <BiErrorAlt color="red" size={40} />

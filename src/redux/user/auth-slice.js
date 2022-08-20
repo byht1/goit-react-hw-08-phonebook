@@ -34,7 +34,7 @@ export const authSlice = createSlice({
       state.error = false;
     },
     [logOut.fulfilled](state, { payload }) {
-      if (payload === 400) {
+      if (payload === 401) {
         return;
       }
       state.user = { name: null, email: null };
@@ -43,7 +43,7 @@ export const authSlice = createSlice({
       state.error = false;
     },
     [fetchCurrentUser.fulfilled](state, { payload }) {
-      if (payload === 400) {
+      if (payload === 401) {
         return;
       }
       state.user = payload;

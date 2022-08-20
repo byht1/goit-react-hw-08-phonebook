@@ -8,7 +8,7 @@ import {
 
 const initialState = {
   contacts: [],
-  isLoadingContacts: false,
+  isLoadingContacts: true,
   error: false,
   errorMessage: '',
 };
@@ -24,6 +24,7 @@ const contactsSlice = createSlice({
         return;
       }
       state.contacts = payload;
+      state.isLoadingContacts = false;
       state.error = false;
       state.errorMessage = '';
     },

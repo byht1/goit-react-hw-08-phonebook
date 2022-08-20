@@ -1,18 +1,8 @@
-import React, { useState } from 'react';
 import { Input } from './SearchContacts.styled';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchContacts } from './../../hook/useSearchContacts';
 
 export const SearchContacts = () => {
-  const [filter, setFilter] = useState('');
-  const [, setSearchParams] = useSearchParams();
-
-  const change = e => {
-    const value = e.target.value;
-    setFilter(value);
-
-    const nextParams = value !== '' ? { search: value } : {};
-    setSearchParams(nextParams);
-  };
+  const { filter, change } = useSearchContacts();
   return (
     <div>
       <label>

@@ -23,12 +23,10 @@ export const Contact = ({ data: { id, name, number } }) => {
     setIcon(name[0].toUpperCase());
   }, [name]);
 
-  const onDeleteContact = async contactId => {
-    try {
-      setLoading(true);
-      await dispatch(contactsOperations.deleteContact(contactId));
-      setLoading(false);
-    } catch (error) {}
+  const onDeleteContact = contactId => {
+    setLoading(true);
+    dispatch(contactsOperations.deleteContact(contactId));
+    setLoading(false);
   };
 
   return (

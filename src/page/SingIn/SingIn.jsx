@@ -3,23 +3,13 @@ import { useForm } from 'react-hook-form';
 import { InputForm } from '../../components/FormNewContacts/FormNewContacts.styled';
 import { ButtonSubmit } from 'components/FormNewContacts/FormNewContacts.styled';
 import { WrapperSingIn, Text, Label, FormText } from './SingIn.styled';
-import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { AuthOperations } from 'redux/user';
 
 export default function SingIn() {
   const { register, handleSubmit } = useForm();
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const onSubmit = async data => {
-    try {
-      await dispatch(AuthOperations.logIn(data));
-      navigate('/contacts', { replace: true });
-    } catch (error) {
-      console.error(error);
-      // Нада доробить
-    }
-  };
+  const onSubmit = data => dispatch(AuthOperations.logIn(data));
 
   return (
     <WrapperSingIn>
