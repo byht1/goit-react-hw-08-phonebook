@@ -8,7 +8,7 @@ const Skeleton = props => {
       width={540}
       height={195}
       viewBox="0 0 540 195"
-      backgroundColor="#d9d9d9"
+      backgroundColor="var(--background-section)"
       foregroundColor="var(--background-card-box)"
       {...props}
     >
