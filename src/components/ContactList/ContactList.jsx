@@ -6,7 +6,6 @@ import Skeleton from 'components/Loader/Skeleton';
 
 export const ContactList = () => {
   const { renderContacts, contacts, isLoadingContacts } = useContactList();
-  console.log('🚀 ~ isLoadingContacts', isLoadingContacts);
 
   return (
     <ContactListWrapper>

@@ -2,10 +2,14 @@ import styled from 'styled-components';
 import { Input } from './../SearchContacts/SearchContacts.styled';
 
 export const FormWrapper = styled.div`
-  width: 500px;
+  width: 100%;
+  max-width: 600px;
   padding: 20px 30px;
   border-radius: 5px;
   background-color: var(--background-card-box);
+  @media screen and (min-width: 1200px) {
+    max-width: 500px;
+  }
 `;
 
 export const Form = styled.form`
