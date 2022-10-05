@@ -15,9 +15,11 @@ export const Nav = () => {
         <li>
           <NLink to={'/'}>Home</NLink>
         </li>
-        <li>
-          <NLink to={'/contacts'}>List of contacts</NLink>
-        </li>
+        {isLoggedIn && (
+          <li>
+            <NLink to={'/contacts'}>List of contacts</NLink>
+          </li>
+        )}
       </NavList>
       {!isLoggedIn ? (
         <NavList>
