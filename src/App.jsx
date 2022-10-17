@@ -49,7 +49,6 @@ export const App = () => {
               </PublicRouter>
             }
           />
-
           <Route
             path="/sing-up"
             element={
@@ -58,11 +57,8 @@ export const App = () => {
               </PublicRouter>
             }
           />
-
-          {/* <Route path="/contacts" element={<ContactsPage />} />
-          <Route path="/sing-in" element={<SingIn />} />
-          <Route path="/sing-up" element={<SingUp />} /> */}
         </Route>
+
         <Route
           path="*"
           element={
@@ -72,7 +68,6 @@ export const App = () => {
           }
         />
       </Routes>
-
       <Topics />
       <ToastContainer
         theme="colored"
