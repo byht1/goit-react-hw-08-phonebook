@@ -45,7 +45,7 @@ export const authSlice = createSlice({
     },
 
     [fetchCurrentUser.pending](state) {
-      state.isLoggedIn = true;
+      state.isLoggedIn = false;
     },
 
     [fetchCurrentUser.fulfilled](state, { payload }) {
